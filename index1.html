@@ -1,94 +1,211 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <title>Introdução à Linguagem Java</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java - Wikipédia Clone</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --link: #0645ad;
+      --visited: #0b0080;
+      --hover: #3366cc;
+      --border: #a7d7f9;
+      --accent: #f8f9fa;
+      --dark-bg: #181a1b;
+      --dark-text: #e6e6e6;
+      --dark-link: #4ea1ff;
+    }
+
+    [data-theme="dark"] {
+      --bg: var(--dark-bg);
+      --text: var(--dark-text);
+      --link: var(--dark-link);
+      --accent: #222;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Georgia", serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--accent);
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    nav {
+      width: 250px;
+      margin-right: 40px;
+    }
+
+    nav h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    nav li {
+      margin-bottom: 8px;
+    }
+
+    nav a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      text-decoration: underline;
+      outline: 2px dashed var(--link);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    main h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      margin-top: 40px;
+    }
+
+    footer {
+      background-color: var(--accent);
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+
+    .theme-toggle button {
+      background: none;
+      border: 1px solid var(--text);
+      padding: 5px 10px;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    a:focus {
+      outline: 3px dashed var(--link);
+      outline-offset: 3px;
+    }
+  </style>
 </head>
 <body>
-<h1>Venha a conhecer a linguagem JAVA</h1>
-<hr/>
-	<!-- Menu -->
-  <nav id="topo">
-<h2>Conteúdo da matéria</h2>
-    <ul>
-      <li><a href="#introducao"><abbr title="Ler 'Introdução à linguagem Java'">Introdução à Linguagem Java</abbr></a></li>
-      <li><a href="#oquejava"><abbr title="Ler 'O que é Java'">O que é Java?</abbr></a></li>
-      <li><a href="#historia"><abbr title="Ler 'História do Java'">História do Java</abbr></a></li>
-      <li><a href="#caracteristicas"><abbr title="Ler 'Características Principais do Java'">Características Principais</abbr></a></li>
-      <li><a href="#versoes"><abbr title="Ler 'Versões importantes do Java'">Versões Importantes</abbr></a></li>
-      <li><a href="#futuro"><abbr title="Ler 'Futuro da linguagem'">Futuro da Linguagem</abbr></a></li>
-      <li><a href="#referencias"><abbr title="Ler 'Referências'">Referências</abbr></a></li>
-    </ul>
-  </nav>
 
-  <!-- Conteúdo -->
-  <section id="introducao">
-    <h2>Introdução à Linguagem Java</h2>
-    <p>Java é uma linguagem de programação <strong>orientada a objetos</strong> amplamente utilizada no desenvolvimento de software para diferentes plataformas.</p>
-    <a href="#topo" class="back-top">Voltar ao topo ↑</a>
-  </section>
+  <!-- Botão de modo escuro -->
+  <div class="theme-toggle">
+    <button onclick="toggleTheme()" aria-label="Alternar modo escuro">🌗</button>
+  </div>
 
-  <section id="oquejava">
-    <h2>O que é Java?</h2>
-    <p>Java é uma linguagem criada pela Sun Microsystems em 1995, conhecida pela sua portabilidade graças à Java Virtual Machine (<abbr title="Java Virtual Machine">JVM</abbr>).</p>
-    <p>O código Java é compilado para <u>bytecode</u>, que pode ser executado em qualquer sistema que tenha uma JVM compatível.</p>
-    <a href="#topo" class="back-top">Voltar ao topo ↑</a>
-  </section>
+  <header role="banner">
+    <h1>Java — Wikipédia Clone</h1>
+    <p><small>Baseado na versão original da Wikipédia, com melhorias de acessibilidade.</small></p>
+  </header>
 
-  <section id="historia">
-    <h2>História do Java</h2>
-    <p>Inicialmente desenvolvida por James Gosling e sua equipe, Java foi projetada para ser simples, segura e portátil.</p>
-    <p>Desde seu lançamento, Java se tornou uma das linguagens mais populares do mundo.</p>
-    <a href="#topo" class="back-top">Voltar ao topo ↑</a>
-  </section>
+  <div class="container">
+    <nav role="navigation" aria-label="Conteúdo da página">
+      <h2>Índice</h2>
+      <ul>
+        <li><a href="#introducao">Introdução</a></li>
+        <li><a href="#historia">História</a></li>
+        <li><a href="#caracteristicas">Características</a></li>
+        <li><a href="#aplicacoes">Aplicações</a></li>
+        <li><a href="#acessibilidade">Acessibilidade</a></li>
+        <li><a href="#referencias">Referências</a></li>
+      </ul>
+    </nav>
 
-  <section id="caracteristicas">
-    <h2>Características Principais do Java</h2>
-    <ol>
-      <li>Orientação a objetos</li>
-      <li>Portabilidade (Write Once, Run Anywhere)</li>
-      <li>Robustez e segurança</li>
-      <li>Multithreading</li>
-      <li>Gerenciamento automático de memória</li>
-    </ol>
-    <a href="#topo" class="back-top">Voltar ao topo ↑</a>
-  </section>
+    <main role="main" id="content">
+      <section id="introducao">
+        <h2>Introdução</h2>
+        <p>Java é uma linguagem de programação orientada a objetos, robusta e multiplataforma, utilizada para desenvolver desde aplicativos móveis até sistemas corporativos.</p>
+      </section>
 
-  <section id="versoes">
-    <h2>Versões Importantes do Java</h2>
-    <ul>
-      <li>Java 1.0 (1996) - lançamento inicial</li>
-      <li>Java 5 (2004) - introdução de generics e annotations</li>
-      <li>Java 8 (2014) - lambdas e API Streams</li>
-      <li>Java 17 (2021) - versão LTS atual</li>
-    </ul>
-    <a href="#topo" class="back-top">Voltar ao topo ↑</a>
-  </section>
+      <section id="historia">
+        <h2>História</h2>
+        <p>Criada em 1995 por James Gosling na Sun Microsystems, Java revolucionou o desenvolvimento com sua promessa: <strong>"Escreva uma vez, execute em qualquer lugar."</strong></p>
+      </section>
 
-  <section id="futuro">
-    <h2>Futuro da Linguagem</h2>
-    <p>Java continua evoluindo com melhorias em performance, recursos modernos e suporte a programação funcional.</p>
-    <blockquote cite="https://www.oracle.com/java/">
-      "Java é a linguagem de programação que permite que você escreva uma vez, execute em qualquer lugar."
-    </blockquote>
-    <a href="#topo" class="back-top">Voltar ao topo ↑</a>
-  </section>
+      <section id="caracteristicas">
+        <h2>Características</h2>
+        <ul>
+          <li><mark>Portabilidade</mark> através da JVM</li>
+          <li><abbr title="Orientação a Objetos">OO</abbr> como paradigma principal</li>
+          <li>Gerenciamento automático de memória (GC)</li>
+          <li>Segurança integrada</li>
+          <li><del>Compilação nativa</del> (não suportada por padrão)</li>
+        </ul>
+      </section>
 
-  <section id="referencias">
-    <h2>Referências</h2>
-    <ul>
-      <li><a href="https://www.oracle.com/java/" target="_blank" rel="noopener">Site oficial do Java - Oracle</a></li>
-      <li><a href="https://docs.oracle.com/en/java/" target="_blank" rel="noopener">Documentação Oficial do Java</a></li>
-      <li><a href="https://www.w3schools.com/java/" target="_blank" rel="noopener">Tutorial Java - W3Schools</a></li>
-      <li><a href="https://www.geeksforgeeks.org/java/" target="_blank" rel="noopener">Guia Java - GeeksforGeeks</a></li>
-      <li><a href="https://pt.wikipedia.org/wiki/Java_(linguagem_de_programa%C3%A7%C3%A3o)" target="_blank" rel="noopener">Wikipedia - Java</a></li>
-    </ul>
-    <a href="#topo" class="back-top">Voltar ao topo ↑</a>
-  </section>
-  <hr/>
-  <footer>
-	<p style="text-align:center">&copy; Todos os direitos reservados - 2025.</p>
+      <section id="aplicacoes">
+        <h2>Aplicações</h2>
+        <ol>
+          <li>Aplicativos Android</li>
+          <li>Sistemas bancários</li>
+          <li>Serviços web</li>
+          <li>Software embarcado</li>
+        </ol>
+        <p>Exemplo de fórmula: E = mc<sup>2</sup>. Fórmula química: H<sub>2</sub>O.</p>
+      </section>
+
+      <section id="acessibilidade">
+        <h2>Acessibilidade</h2>
+        <blockquote cite="https://www.w3.org/WAI/fundamentals/accessibility-intro/">
+          "Acessibilidade na web significa que pessoas com deficiências podem usar a web."
+        </blockquote>
+        <p>Este clone inclui navegação por teclado, modo escuro, foco visível e semântica HTML5 para leitores de tela.</p>
+      </section>
+
+      <section id="referencias">
+        <h2>Referências</h2>
+        <ul>
+          <li><a href="https://www.oracle.com/java/" target="_blank" rel="noopener">Site Oficial do Java</a></li>
+          <li><a href="https://docs.oracle.com/en/java/" target="_blank" rel="noopener">Documentação Oficial</a></li>
+          <li><a href="https://pt.wikipedia.org/wiki/Java_(linguagem_de_programa%C3%A7%C3%A3o)" target="_blank" rel="noopener">Wikipedia - Java</a></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer role="contentinfo">
+    <p>Clone educacional da Wikipedia com foco em acessibilidade. Desenvolvido com HTML e CSS puros.</p>
   </footer>
 
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+  </script>
 </body>
 </html>
